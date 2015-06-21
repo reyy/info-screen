@@ -15,23 +15,6 @@ body {
 	align-content: center;
 	overflow : hidden;
 	float: left;
-
-	background: #66cc99;
-	/* Old browsers */
-	background: -moz-linear-gradient(-45deg, #66cc99 0%, #339999 100%);
-	/* FF3.6+ */
-	background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #66cc99), color-stop(100%, #339999));
-	/* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(-45deg, #66cc99 0%, #339999 100%);
-	/* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(-45deg, #66cc99 0%, #339999 100%);
-	/* Opera 11.10+ */
-	background: -ms-linear-gradient(-45deg, #66cc99 0%, #339999 100%);
-	/* IE10+ */
-	background: linear-gradient(-45deg, #66cc99 0%, #339999 100%);
-	/* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#66cc99, endColorstr=#339999, GradientType=1);
-	/* IE6-9 fallback on horizontal gradient */
 }
 #main > img {
 	width: 100%;
