@@ -8,7 +8,8 @@ moment.locale('en', {
         s:  "Arr",
         m:  "1 min",
         mm: "%d mins"
-    }
+    },
+    invalidDate: "-"
 });
 
 function GetClock(){
