@@ -18,10 +18,14 @@
 
 		<div id = 'marquee'>
 			<marquee behavior="scroll" direction="left">
-				Welcome to Residential College 4! &nbsp::&nbsp 
-				Announcements &nbsp 
-				<i class="fa fa-bullhorn"></i>&nbsp 
-				This is a test announcement! 
+				Welcome to Residential College 4! 								&nbsp::&nbsp 
+				Announcements 													&nbsp 
+				<i class="fa fa-bullhorn"></i>									&nbsp 
+				This is a test announcement! 									&nbsp 
+				<i class="fa fa-bullhorn"></i>									&nbsp 
+				Sign up for FOC 2015 now! For more info, visit foc.rc4.sg 		&nbsp 
+				<i class="fa fa-birthday-cake"></i> 							&nbsp
+				Happy Birthday $Person_Name!
 			</marquee>
 		</div>
 		
@@ -35,33 +39,39 @@
 				  </tr>
 				  <tr>
 				    <td class='busno'>D1</td>
-				    <td class='bustime'>5mins</td> 
+				    <td class='bustime' id='rc4_d1'><i class="fa fa-refresh fa-spin"></i>
+</td> 
 				  </tr>
 				  <tr>
 				    <td class='busno'>D2</td>
-				    <td class='bustime'>2mins</td> 
+				    <td class='bustime' id='rc4_d2'><i class="fa fa-refresh fa-spin"></i>
+</td> 
 				  </tr>
 				  <tr>
 				    <td class='busstop_title' colspan='2'><span class='circle'>2</span>&nbsp RC4 Bus Stop</td>
 				  </tr>
 				  <tr>
 				    <td class='busno'>33</td>
-				    <td class='bustime'>Arr</td> 
+				    <td class='bustime' id='lta_33'><i class="fa fa-refresh fa-spin"></i>
+</td> 
 				  </tr>
 				  <tr>
 				    <td class='busno'>196</td>
-				    <td class='bustime'>23mins</td> 
+				    <td class='bustime' id='lta_196'><i class="fa fa-refresh fa-spin"></i>
+</td> 
 				  </tr>
 				  <tr>
 				    <td class='busstop_title' colspan='2'><span class='circle'>3</span>&nbsp Opp RC4 Stop</td>
 				  </tr>
 				  <tr>
 				    <td class='busno'>33</td>
-				    <td class='bustime'>9mins</td> 
+				    <td class='bustime' id='lta_opp_33'><i class="fa fa-refresh fa-spin"></i>
+</td> 
 				  </tr>
 				  <tr>
 				    <td class='busno'>196</td>
-				    <td class='bustime'>4mins</td> 
+				    <td class='bustime' id='lta_opp_196'><i class="fa fa-refresh fa-spin"></i>
+</td> 
 				  </tr>
 				</table>
 			</div>
@@ -69,6 +79,7 @@
 
 	</div>
 	<script type="text/javascript" src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
 	<script type="text/javascript" src="scripts.js"></script>
 </body>
 
