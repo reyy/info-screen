@@ -1,6 +1,8 @@
 <head>
 	<title>Residential College 4 - Info Display</title>
 	<link href="style.css" rel="stylesheet" type="text/css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 </head>
 <body>
 	<div id='containter'>
@@ -14,11 +16,20 @@
 		<div id = 'logo'><img src="logo.png"/></div>
 
 		<div id = 'marquee'>
+			<marquee behavior="scroll" direction="left">
+				Welcome to Residential College 4! &nbsp::&nbsp 
+				Announcements &nbsp 
+				<i class="fa fa-bullhorn"></i>&nbsp 
+				This is a test announcement! 
+			</marquee>
 		</div>
 		
 		<div id='right_bar'>
-			<p>21 June</p>
+			<div id="clockbox"></div>
 		</div>
 
 	</div>
+	<script type="text/javascript" src="scripts.js"></script>
 </body>
+
+
