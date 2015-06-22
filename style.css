@@ -1,4 +1,7 @@
-/*@import url(RBNo2Light.otf);*/
+@font-face {
+	font-family: RBNo2 Light;
+	src: url("RBNo2Light.otf") format("opentype");
+}
 body {
 	margin: 0;
 	height: 100%;
