@@ -39,14 +39,10 @@ function loadNextImageCompleted(){
 
 function getBusTiming(){
   $.ajax({
-    url: 'https://query.yahooapis.com/v1/public/yql',
-    data: {
-        q: "select * from json where url ='https://myaces.nus.edu.sg/prjbus/services/shuttlebus/UTOWN'",
-        format: "json"
-    },
-    dataType: "jsonp",
+    url: 'http://cors.io/?u=https://myaces.nus.edu.sg/prjbus/services/shuttlebus/UTOWN',
+    dataType: "json",
     success: function (data) {
-        isb = data.query.results.json.shuttles;
+        isb = data.shuttles;
         for(var i=0; i<isb.length; i++) {
 	        if(isb[i].name=="D1 (UTown)") {
 	            if(isb[i].arrivalTime != "Arr" && isb[i].arrivalTime != "-")
