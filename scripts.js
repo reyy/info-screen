@@ -1,5 +1,5 @@
 var tmonth=new Array("JAN","FEB","MAR","APR","May","JUN","JUL","AUG","SEPT","OCT","NOV","DEC");
-var images=new Array();
+var images=new Array("transparent.png");
 var curImage = 0;
 
 moment.locale('en', {
@@ -101,8 +101,10 @@ function loadImageList(){
     url: 'https://spreadsheets.google.com/feeds/list/1vwEDjW19YoJZmRTDVsRCMGysjePw81ls8CSe90NeRCA/1/public/values?alt=json',
     dataType: "jsonp",
     success: function (data) {
+    	images = new Array();
+    	
         for(var i=0; i<data.feed.entry.length; i++)
-        { 
+        {
         	//Todo: Fix issues with start/expiry checks
             if(data.feed.entry[i]['gsx$approved']['$t'] == "Y" /*&& 
             	(data.feed.entry[i]['gsx$startdate']['$t'] == "" || moment(data.feed.entry[0]['gsx$startdate']['$t']).isAfter()) && 
