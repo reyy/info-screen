@@ -1,5 +1,5 @@
 var tmonth=new Array("JAN","FEB","MAR","APR","May","JUN","JUL","AUG","SEPT","OCT","NOV","DEC");
-var images=new Array("https://rc4.sg/img/bkg1.jpg","https://rc4.sg/img/bkg3.jpg","https://graphipaintartographer.files.wordpress.com/2011/08/3508-11jmg-blws-posters-landscape-2-2-small.jpg");
+var images=new Array();
 var curImage = 0;
 
 moment.locale('en', {
@@ -96,7 +96,26 @@ function getBusTiming(){
 });
 }
 
+function loadImageList(){
+	$.ajax({
+    url: 'https://spreadsheets.google.com/feeds/list/1vwEDjW19YoJZmRTDVsRCMGysjePw81ls8CSe90NeRCA/1/public/values?alt=json',
+    dataType: "jsonp",
+    success: function (data) {
+        for(var i=0; i<data.feed.entry.length; i++)
+        { 
+        	//Todo: Fix issues with start/expiry checks
+            if(data.feed.entry[i]['gsx$approved']['$t'] == "Y" /*&& 
+            	(data.feed.entry[i]['gsx$startdate']['$t'] == "" || moment(data.feed.entry[0]['gsx$startdate']['$t']).isAfter()) && 
+            	(data.feed.entry[i]['gsx$enddate']['$t'] == "" || moment(data.feed.entry[0]['gsx$enddate']['$t']).isBefore())*/)
+            	images[images.length]=data.feed.entry[i]['gsx$posterurl']['$t'];
+        }
+    }
+        
+    });
+}
+
 window.onload=function(){
+	loadImageList();
 	GetClock();
 	getBusTiming();
 	loadNextImageCompleted();
