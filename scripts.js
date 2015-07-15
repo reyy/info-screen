@@ -1,6 +1,7 @@
 var tmonth=new Array("JAN","FEB","MAR","APR","May","JUN","JUL","AUG","SEPT","OCT","NOV","DEC");
 var images=new Array("transparent.png");
 var curImage = 0;
+var messageCombined = "Welcome to Residential College 4! &nbsp";
 
 moment.locale('en', {
     relativeTime : {
@@ -102,7 +103,7 @@ function loadImageList(){
     dataType: "jsonp",
     success: function (data) {
     	images = new Array();
-    	
+
         for(var i=0; i<data.feed.entry.length; i++)
         {
         	//Todo: Fix issues with start/expiry checks
@@ -116,10 +117,39 @@ function loadImageList(){
     });
 }
 
+function loadMessageList(){
+	$.ajax({
+    url: 'https://spreadsheets.google.com/feeds/list/1dRpDWAt6YZbJgnhYKuAb4YL2QkEZlKjiGMwEKnjolbU/1/public/values?alt=json',
+    dataType: "jsonp",
+    success: function (data) {
+    	images = new Array();
+
+        for(var i=0; i<data.feed.entry.length; i++)
+        {
+        	//Todo: Fix issues with start/expiry checks
+            if(data.feed.entry[i]['gsx$approved']['$t'] == "Y" /*&& 
+            	(data.feed.entry[i]['gsx$startdate']['$t'] == "" || moment(data.feed.entry[0]['gsx$startdate']['$t']).isAfter()) && 
+            	(data.feed.entry[i]['gsx$enddate']['$t'] == "" || moment(data.feed.entry[0]['gsx$enddate']['$t']).isBefore())*/)
+            {
+            	if(data.feed.entry[i]['gsx$messagetype']['$t'] == "Announcement")
+            		messageCombined += '&nbsp <i class="fa fa-bullhorn"></i> &nbsp';
+            	else if(data.feed.entry[i]['gsx$messagetype']['$t'] == "Birthday Wishes")
+            		messageCombined += '&nbsp <i class="fa fa-birthday-cake"></i> &nbsp';
+
+            	messageCombined+='&nbsp' + data.feed.entry[i]['gsx$message']['$t'] + '&nbsp';
+            }
+        }
+        $('#scroller').html(messageCombined);
+    }
+        
+    });
+}
+
 window.onload=function(){
 	loadImageList();
 	GetClock();
 	getBusTiming();
+	loadMessageList();
 	loadNextImageCompleted();
 	setInterval(GetClock,1000);
 	setInterval(loadNextImage,6000);
