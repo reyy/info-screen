@@ -1,5 +1,5 @@
 var tmonth=new Array("JAN","FEB","MAR","APR","May","JUN","JUL","AUG","SEPT","OCT","NOV","DEC");
-var images=new Array("transparent.png");
+var posterList=new Array("transparent.png");
 var curImage = 0;
 var messageCombined = "Welcome to Residential College 4! &nbsp";
 
@@ -31,10 +31,10 @@ function loadNextImage(){
 }
 
 function loadNextImageCompleted(){
-	if(++curImage >= images.length)
+	if(++curImage >= posterList.length)
 		curImage = 0;
 
-	$('#curImage')[0].src=images[curImage];
+	$('#curImage')[0].src=posterList[curImage];
 	$('#curImage').fadeIn(500);
 }
 
@@ -63,7 +63,7 @@ function getBusTiming(){
 });
 
   $.ajax({
-    url: 'https://arrivelah.herokuapp.com/?id=19059',
+    url: 'http://arrivelah.herokuapp.com/?id=19059',
     dataType: "json",
     success: function (data) {
         //console.log(JSON.stringify(data));
@@ -80,7 +80,7 @@ function getBusTiming(){
 });
 
     $.ajax({
-    url: 'https://arrivelah.herokuapp.com/?id=19051',
+    url: 'http://arrivelah.herokuapp.com/?id=19051',
     dataType: "json",
     success: function (data) {
         //console.log(JSON.stringify(data));
@@ -102,7 +102,7 @@ function loadImageList(){
     url: 'https://spreadsheets.google.com/feeds/list/1vwEDjW19YoJZmRTDVsRCMGysjePw81ls8CSe90NeRCA/1/public/values?alt=json',
     dataType: "jsonp",
     success: function (data) {
-    	images = new Array();
+    	posterList = new Array();
 
         for(var i=0; i<data.feed.entry.length; i++)
         {
@@ -110,7 +110,7 @@ function loadImageList(){
             if(data.feed.entry[i]['gsx$approved']['$t'] == "Y" /*&& 
             	(data.feed.entry[i]['gsx$startdate']['$t'] == "" || moment(data.feed.entry[0]['gsx$startdate']['$t']).isAfter()) && 
             	(data.feed.entry[i]['gsx$enddate']['$t'] == "" || moment(data.feed.entry[0]['gsx$enddate']['$t']).isBefore())*/)
-            	images[images.length]=data.feed.entry[i]['gsx$posterurl']['$t'];
+            	posterList[posterList.length]=data.feed.entry[i]['gsx$posterurl']['$t'];
         }
     }
         
@@ -122,7 +122,6 @@ function loadMessageList(){
     url: 'https://spreadsheets.google.com/feeds/list/1dRpDWAt6YZbJgnhYKuAb4YL2QkEZlKjiGMwEKnjolbU/1/public/values?alt=json',
     dataType: "jsonp",
     success: function (data) {
-    	images = new Array();
 
         for(var i=0; i<data.feed.entry.length; i++)
         {
