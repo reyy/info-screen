@@ -59,7 +59,7 @@ body {
 	text-align: center;
 }
 #bus {
-	padding-top: 8vh;
+	padding-top: 7vh;
 	font-family: 'RBNo2 Light';
 	font-size: 7vh;
 	color: #ffffff;
@@ -141,7 +141,7 @@ table {
 table tr td.busstop_title {
 	padding-top: 2vh;
 	color:#bbbbbb;
-	font-size: 4vh;
+	font-size: 3.8vh;
 	text-align: left;
 }
 .circle{
@@ -152,7 +152,7 @@ table tr td.busstop_title {
     background-color: #bbbbbb;
     text-align: center;
     color:#339999;
-	font-size: 4.5vh;
+	font-size: 4.2vh;
 	vertical-align: middle;
 
 }
