@@ -70,10 +70,22 @@ function getBusTiming(){
         lta = data.services;
         for(var i=0; i<lta.length; i++)
         { 
+        	var res = "-";
+        	if(lta[i]["next"]["duration_ms"] == null)
+        		res = "-";
+        	else 
+        	{
+			res = Math.floor((lta[i]["next"]["duration_ms"]/ 1000) / 60);
+			if(res < 1)
+				res = "Arr";
+			else
+				res = res  + " mins";
+        	}
+
         	if(lta[i].no == "33")
-            	$('#lta_33').html(moment(lta[i]["next"]["time"]).fromNow(true));
-            else if(lta[i].no == "196")
-            	$('#lta_196').html(moment(lta[i]["next"]["time"]).fromNow(true));
+            		$('#lta_33').html(res);
+            	else if(lta[i].no == "196")
+            		$('#lta_196').html(res);
           //lta[i]["subsequent"]["time"] = moment(lta[i]["subsequent"]["time"]).fromNow(true);
         }
     }
@@ -87,10 +99,22 @@ function getBusTiming(){
         lta = data.services;
         for(var i=0; i<lta.length; i++)
         { 
+        	var res = "-";
+        	if(lta[i]["next"]["duration_ms"] == null)
+        		res = "-";
+        	else 
+        	{
+			res = Math.floor((lta[i]["next"]["duration_ms"]/ 1000) / 60);
+			if(res < 1)
+				res = "Arr";
+			else
+				res = res  + " mins";
+        	}
+
             if(lta[i].no == "33")
-            	$('#lta_opp_33').html(moment(lta[i]["next"]["time"]).fromNow(true));
+            	$('#lta_opp_33').html(res);
             else if(lta[i].no == "196")
-            	$('#lta_opp_196').html(moment(lta[i]["next"]["time"]).fromNow(true));
+            	$('#lta_opp_196').html(res);
         }
         
     }
