@@ -40,18 +40,18 @@ function loadNextImageCompleted(){
 
 function getBusTiming(){
   $.ajax({
-    url: 'http://cors.io/?u=https://myaces.nus.edu.sg/prjbus/services/shuttlebus/UTOWN',
+    url: 'http://cors.io/?u=https://nextbus.comfortdelgro.com.sg/eventservice.svc/Shuttleservice?busstopname=UTOWN',
     dataType: "json",
     success: function (data) {
-        isb = data.shuttles;
+        isb = data.ShuttleServiceResult.shuttles;
         for(var i=0; i<isb.length; i++) {
-	        if(isb[i].name=="D1 (UTown)") {
+	        if(isb[i].name=="D1 (To UTown)") {
 	            if(isb[i].arrivalTime != "Arr" && isb[i].arrivalTime != "-")
 	            	$('#rc4_d1').html(isb[i].arrivalTime + " mins");
 	            else
 	            	$('#rc4_d1').html(isb[i].arrivalTime);
 	        }
-	        else if (isb[i].name=="D2") {
+	        else if (isb[i].name=="D2 (To UTown)") {
 	        	if(isb[i].arrivalTime != "Arr" && isb[i].arrivalTime != "-")
 	            	$('#rc4_d2').html(isb[i].arrivalTime + " mins");
 	            else
