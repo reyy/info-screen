@@ -130,11 +130,10 @@ function loadImageList(){
 
         for(var i=0; i<data.feed.entry.length; i++)
         {
-        	//Todo: Fix issues with start/expiry checks
-            if(data.feed.entry[i]['gsx$approved']['$t'] == "Y" /*&& 
-            	(data.feed.entry[i]['gsx$startdate']['$t'] == "" || moment(data.feed.entry[0]['gsx$startdate']['$t']).isAfter()) && 
-            	(data.feed.entry[i]['gsx$enddate']['$t'] == "" || moment(data.feed.entry[0]['gsx$enddate']['$t']).isBefore())*/)
-            	posterList[posterList.length]=data.feed.entry[i]['gsx$posterurl']['$t'];
+            if(data.feed.entry[i]['gsx$approved']['$t'] == "Y" && 
+                (data.feed.entry[i]['gsx$startdate']['$t'] == "" || moment(data.feed.entry[i]['gsx$startdate']['$t'], "MM/DD/YYYY").isBefore()) && 
+                (data.feed.entry[i]['gsx$enddate']['$t'] == "" || moment(data.feed.entry[i]['gsx$enddate']['$t']+ "23:59", "MM/DD/YYYY HH:mm").isAfter()))
+                posterList[posterList.length]=data.feed.entry[i]['gsx$posterurl']['$t'];
         }
     }
         
@@ -149,10 +148,9 @@ function loadMessageList(){
 
         for(var i=0; i<data.feed.entry.length; i++)
         {
-        	//Todo: Fix issues with start/expiry checks
-            if(data.feed.entry[i]['gsx$approved']['$t'] == "Y" /*&& 
-            	(data.feed.entry[i]['gsx$startdate']['$t'] == "" || moment(data.feed.entry[0]['gsx$startdate']['$t']).isAfter()) && 
-            	(data.feed.entry[i]['gsx$enddate']['$t'] == "" || moment(data.feed.entry[0]['gsx$enddate']['$t']).isBefore())*/)
+            if(data.feed.entry[i]['gsx$approved']['$t'] == "Y" && 
+                (data.feed.entry[i]['gsx$startdate']['$t'] == "" || moment(data.feed.entry[i]['gsx$startdate']['$t'], "MM/DD/YYYY").isBefore()) && 
+                (data.feed.entry[i]['gsx$enddate']['$t'] == "" || moment(data.feed.entry[i]['gsx$enddate']['$t']+ "23:59", "MM/DD/YYYY HH:mm").isAfter()))
             {
             	if(data.feed.entry[i]['gsx$messagetype']['$t'] == "Announcement")
             		messageCombined += '&nbsp <i class="fa fa-bullhorn"></i> &nbsp';
