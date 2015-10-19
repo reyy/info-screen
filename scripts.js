@@ -176,5 +176,5 @@ window.onload=function(){
 	loadNextImageCompleted();
 	setInterval(GetClock,1000);
 	setInterval(loadNextImage,6000);
-	setInterval(getBusTiming,30000);
+	setInterval(getBusTiming,15000);
 }
