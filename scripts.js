@@ -39,8 +39,9 @@ function loadNextImageCompleted(){
 }
 
 function getBusTiming(){
+  //Requires the '--disable-web-security' flag in chrome
   $.ajax({
-    url: 'http://cors.io/?u=https://nextbus.comfortdelgro.com.sg/eventservice.svc/Shuttleservice?busstopname=UTOWN',
+    url: 'https://nextbus.comfortdelgro.com.sg/eventservice.svc/Shuttleservice?busstopname=UTOWN',
     dataType: "json",
     success: function (data) {
         isb = data.ShuttleServiceResult.shuttles;
