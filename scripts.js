@@ -49,7 +49,7 @@ function getBusTiming(){
 	        if(isb[i].name=="D1 (To BIZ2)") {
 	            if(isb[i].arrivalTime != "Arr" && isb[i].arrivalTime != "-")
 	            	$('#rc4_d1').html(isb[i].arrivalTime + " mins");
-	            else if(&& isb[i].arrivalTime == "N.A")
+	            else if(isb[i].arrivalTime == "N.A")
 	            	$('#rc4_d1').html("-");
 	            else
 	            	$('#rc4_d1').html(isb[i].arrivalTime);
@@ -57,7 +57,7 @@ function getBusTiming(){
 	        else if (isb[i].name=="D2 (To CP11)") {
 	            if(isb[i].arrivalTime != "Arr" && isb[i].arrivalTime != "-")
 	            	$('#rc4_d2').html(isb[i].arrivalTime + " mins");
-	            else if(&& isb[i].arrivalTime == "N.A")
+	            else if(isb[i].arrivalTime == "N.A")
 	            	$('#rc4_d2').html("-");
 	            else
 	            	$('#rc4_d2').html(isb[i].arrivalTime);
