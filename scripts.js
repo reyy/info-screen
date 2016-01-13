@@ -1,7 +1,9 @@
+var rssurl = "http://www.channelnewsasia.com/starterkit/servlet/cna/rss/singapore.xml";
 var tmonth=new Array("JAN","FEB","MAR","APR","May","JUN","JUL","AUG","SEPT","OCT","NOV","DEC");
 var posterList=new Array("transparent.png");
 var curImage = 0;
 var messageCombined = "Welcome to Residential College 4! &nbsp";
+var newsCombined = "";
 
 moment.locale('en', {
     relativeTime : {
@@ -13,7 +15,28 @@ moment.locale('en', {
     invalidDate: "-"
 });
 
-function GetClock(){
+function getNews(){
+    $.get(rssurl, function(data) {
+        newsCombined = "";
+
+        var $xml = $(data);
+        $xml.find("item").each(function() {
+            var $this = $(this),
+                item = {
+                    title: $this.find("title").text(),
+                    description: $this.find("description").text()
+                }
+                //Ignore feed description (for now)
+                newsCombined += '&nbsp <i class="fa fa-newspaper-o"></i> &nbsp';
+                newsCombined+='&nbsp' + item.title + '&nbsp';
+        });
+
+        $('#scroller').html(messageCombined + newsCombined);
+    });
+
+}
+
+function getClock(){
 	var d=new Date();
 	var nmonth=d.getMonth(),ndate=d.getDate(),nyear=d.getYear();
 	if(nyear<1000) nyear+=1900;
@@ -165,7 +188,7 @@ function loadMessageList(){
             	messageCombined+='&nbsp' + data.feed.entry[i]['gsx$message']['$t'] + '&nbsp';
             }
         }
-        $('#scroller').html(messageCombined);
+        $('#scroller').html(messageCombined + newsCombined);
     }
         
     });
@@ -173,11 +196,13 @@ function loadMessageList(){
 
 window.onload=function(){
 	loadImageList();
-	GetClock();
+	getClock();
 	getBusTiming();
+    getNews();
 	loadMessageList();
 	loadNextImageCompleted();
-	setInterval(GetClock,1000);
+	setInterval(getClock,1000);
 	setInterval(loadNextImage,6000);
 	setInterval(getBusTiming,15000);
+    setInterval(getNews,3*60*60*1000); //Every 3 hours
 }
