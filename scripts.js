@@ -46,7 +46,7 @@ function getBusTiming(){
     success: function (data) {
         isb = data.ShuttleServiceResult.shuttles;
         for(var i=0; i<isb.length; i++) {
-	        if(isb[i].name=="D1 (To BIZ2)") {
+	        if(isb[i].name=="D1(To UTown)") {
 	            if(isb[i].arrivalTime == "N.A")
 	            	$('#rc4_d1').html("-");
 	            else if(isb[i].arrivalTime != "Arr" && isb[i].arrivalTime != "-")
@@ -54,7 +54,7 @@ function getBusTiming(){
 	            else
 	            	$('#rc4_d1').html(isb[i].arrivalTime);
 	        }
-	        else if (isb[i].name=="D2 (To CP11)") {
+	        else if (isb[i].name=="D2(To UTown)") {
 	            if(isb[i].arrivalTime == "N.A")
 	            	$('#rc4_d2').html("-");
 	            else if(isb[i].arrivalTime != "Arr" && isb[i].arrivalTime != "-")
